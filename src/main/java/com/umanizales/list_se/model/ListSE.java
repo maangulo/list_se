@@ -105,16 +105,61 @@ public class ListSE {
         }
     }
 
-    public void delete ()
+    public void delete(Boy boy)
     {
-        if(this.head!=null && this.head.getNext()!=null)
+        Node fin = null;
+        if(head==fin && boy==head.getData())
         {
-            Node temp = head;
-            head = head.getNext();
-            temp.getNext();
-            count--;
-
+            head=fin=null;
+        }else if(boy==head.getData())
+        {
+            head=head.getNext();
+        }else
+        {
+            Node temp;
+            Node previus;
+            previus=head;
+            temp=head.getNext();
+            while(temp!=null && temp.getData()!=boy)
+            {
+                previus=previus.getNext();
+                temp=temp.getNext();
+            }
+            if(temp!=null)
+            {
+                previus.getNext();
+                temp.getNext();
+                if (temp==fin)
+                {
+                    fin=previus;
+                }
+            }
         }
+        count--;
+    }
+
+    public List<Boy> gender(String gender)
+    {
+        if (this.head!=null)
+        {
+            Node temp = this.head;
+            List<Boy> list = new ArrayList<>();
+            while (temp !=null)
+            {
+                if(gender.equals("Male"))
+                {
+                    list.add(temp.getData());
+                    temp = temp.getNext();
+                }else if(gender.equals("Femenine"))
+                {
+                    list.add(temp.getData());
+                    temp = temp.getNext();
+                }
+
+            }
+            return list;
+        }
+        return null;
     }
 
 

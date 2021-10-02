@@ -76,10 +76,16 @@ public class BoysController {
         return listSeService.changeStartToEnd();
     }
 
-    @GetMapping(path = "delete")
+    @GetMapping(path = "delete/{name}")
     public ResponseEntity<ResponseDTO> delete()
     {
         return listSeService.delete();
+    }
+
+    @GetMapping(path = "/list/{gender}")
+    public ResponseEntity<ResponseDTO> gender(@PathVariable String gender)
+    {
+        return listSeService.gender();
     }
 
 

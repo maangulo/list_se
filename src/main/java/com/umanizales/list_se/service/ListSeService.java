@@ -64,8 +64,13 @@ public class ListSeService {
 
     public ResponseEntity<ResponseDTO> delete()
     {
-        ListBoys.delete();
         return new ResponseEntity<>(new ResponseDTO("Niño Eliminado", true, null), HttpStatus.OK);
+    }
+
+    public ResponseEntity<ResponseDTO> gender()
+    {
+        return new ResponseEntity<>(new ResponseDTO("Listado Por Genero",
+                ListBoys.list().stream().filter(boy -> boy.getGender().equals(gender())),null),HttpStatus.OK);
     }
 
 
